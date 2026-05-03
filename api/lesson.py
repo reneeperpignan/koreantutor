@@ -66,17 +66,30 @@ Vocabulary must be 15-20 words relevant to a realistic scenario."""
 class handler(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
         self._respond(200, None)
-
+        
     def do_GET(self):
         p = urlparse(self.path).path.rstrip("/")
-        if p == "/api/lesson/today":
+        # Temporary: return the raw path so we can see what Vercel passes
+        if "debug" in p:
+            self._respond(200, {"raw_path": self.path, "parsed_path": p})
+            return
+        if p == "/api/lesson/today" or p == "/today":
             self._today()
-        elif p == "/api/lesson/history":
+        elif p == "/api/lesson/history" or p == "/history":
             self._history()
-        elif p == "/api/lesson/debug-curriculum":      # ← add this
-            self._respond(200, TOPIK_GRAMMAR_CURRICULUM)
         else:
-            self._respond(404, {"error": "Not found"})
+            self._respond(404, {"error": "Not found", "path": p})
+
+    # def do_GET(self):
+    #     p = urlparse(self.path).path.rstrip("/")
+    #     if p == "/api/lesson/today":
+    #         self._today()
+    #     elif p == "/api/lesson/history":
+    #         self._history()
+    #     elif p == "/api/lesson/debug-curriculum":      # ← add this
+    #         self._respond(200, TOPIK_GRAMMAR_CURRICULUM)
+    #     else:
+    #         self._respond(404, {"error": "Not found"})
 
     def do_POST(self):
         p = urlparse(self.path).path.rstrip("/")
