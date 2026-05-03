@@ -2,7 +2,7 @@ import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "_lib"))
 
 from http.server import BaseHTTPRequestHandler
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse
 from datetime import date, timedelta
 import json
 from db import get_supabase
@@ -78,12 +78,13 @@ class handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         p = urlparse(self.path).path.rstrip("/")
+        parts = p.split("/")
         if p == "/api/lesson/generate":
             self._generate()
-        elif p == "/api/lesson/complete":
-            self._complete()
-        elif p == "/api/lesson/check-exercises":
-            self._check_exercises()
+        elif len(parts) == 5 and parts[-1] == "complete":
+            self._complete(int(parts[-2]))
+        elif len(parts) == 5 and parts[-1] == "check-exercises":
+            self._check_exercises(int(parts[-2]))
         else:
             self._respond(404, {"error": "Not found"})
 
@@ -146,11 +147,11 @@ class handler(BaseHTTPRequestHandler):
         except Exception as e:
             self._respond(500, {"error": str(e)})
 
-    def _complete(self):
+    def _complete(self, lesson_id):
         try:
-            qs = parse_qs(urlparse(self.path).query)
-            lesson_id = int(qs.get("id", [0])[0])
-            score = float(qs.get("score", [0])[0])
+            length = int(self.headers.get("Content-Length", 0))
+            body = json.loads(self.rfile.read(length)) if length else {}
+            score = float(body.get("score", 0))
             sb = get_supabase()
             today = date.today()
 
@@ -183,10 +184,8 @@ class handler(BaseHTTPRequestHandler):
         except Exception as e:
             self._respond(500, {"error": str(e)})
 
-    def _check_exercises(self):
+    def _check_exercises(self, lesson_id):
         try:
-            qs = parse_qs(urlparse(self.path).query)
-            lesson_id = int(qs.get("id", [0])[0])
             length = int(self.headers.get("Content-Length", 0))
             answers = json.loads(self.rfile.read(length))
 
