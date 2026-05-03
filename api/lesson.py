@@ -69,17 +69,15 @@ class handler(BaseHTTPRequestHandler):
         
     def do_GET(self):
         p = urlparse(self.path).path.rstrip("/")
-        # Temporary: return the raw path so we can see what Vercel passes
-        if "debug" in p:
-            self._respond(200, {"raw_path": self.path, "parsed_path": p})
-            return
-        if p == "/api/lesson/today" or p == "/today":
+        if p == "/api/lesson/today":
             self._today()
-        elif p == "/api/lesson/history" or p == "/history":
+        elif p == "/api/lesson/history":
             self._history()
+        elif p == "/api/lesson/debug-curriculum":
+            self._respond(200, {"curriculum": TOPIK_GRAMMAR_CURRICULUM})
         else:
             self._respond(404, {"error": "Not found", "path": p})
-
+            
     # def do_GET(self):
     #     p = urlparse(self.path).path.rstrip("/")
     #     if p == "/api/lesson/today":
