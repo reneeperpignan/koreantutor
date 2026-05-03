@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --korean-red: #e94560;
+  --navy-deep: #1a1a2e;
+  --navy-mid: #16213e;
+}
+
+/* Korean text rendering */
+* { word-break: keep-all; }
+
+/* Markdown in lesson content */
+.prose-lesson h3 { @apply text-lg font-bold mt-4 mb-2; }
+.prose-lesson p  { @apply mb-3 leading-relaxed; }
+.prose-lesson ul { @apply list-disc pl-5 mb-3 space-y-1; }
+.prose-lesson strong { @apply font-bold; }
