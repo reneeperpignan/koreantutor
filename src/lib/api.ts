@@ -16,8 +16,8 @@ async function req(path: string, opts: RequestInit = {}) {
 }
 
 // Profile
-export const getProfile    = ()           => req("/api/profile/")
-export const updateProfile = (data: any)  => req("/api/profile/", { method: "PATCH", body: JSON.stringify(data) })
+export const getProfile    = ()           => req("/api/profile")
+export const updateProfile = (data: any)  => req("/api/profile", { method: "PATCH", body: JSON.stringify(data) })
 
 // Lessons
 export const getTodayLesson   = ()                           => req("/api/lesson/today")
