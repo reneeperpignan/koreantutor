@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { getTodayLesson, generateLesson, completeLesson, checkExercises, addFlashcards, getProfile, getLessonHistory } from "@/lib/api"
 import ReactMarkdown from "react-markdown"
+import Link from "next/link"
 
 type Tab = "lesson" | "history"
 
@@ -19,6 +20,7 @@ export default function LessonsPage() {
   const [completing, setCompleting] = useState(false)
   const [completed, setCompleted]   = useState(false)
   const [score, setScore]           = useState<number | null>(null)
+  const [levelComplete, setLevelComplete] = useState<string | null>(null)
 
   useEffect(() => {
     setLoading(true)
@@ -38,6 +40,10 @@ export default function LessonsPage() {
     setGenerating(true)
     try {
       const l = await generateLesson()
+      if (l.level_complete) {
+      setLevelComplete(l.message)  // new state variable
+      return
+    }
       setLesson(l)
       setAnswers({})
       setResults({})
@@ -122,6 +128,18 @@ export default function LessonsPage() {
               >
                 {generating ? "Generating..." : "Generate Today's Lesson"}
               </button>
+            </div>
+          )}
+
+          {/* Level complete */}
+          {!loading && levelComplete && (
+            <div className="bg-white rounded-xl border border-yellow-300 p-8 text-center space-y-3">
+              <div className="text-4xl">🎓</div>
+              <p className="font-medium text-yellow-700">Level Complete!</p>
+              <p className="text-gray-500 text-sm">{levelComplete}</p>
+              <Link href="/profile" className="inline-block bg-[#e94560] text-white px-5 py-2 rounded-lg text-sm font-medium">
+                Update My Level →
+              </Link>
             </div>
           )}
 

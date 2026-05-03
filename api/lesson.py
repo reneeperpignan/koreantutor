@@ -14,10 +14,14 @@ from cors import add_cors
 
 def _next_topic(level, covered):
     curriculum = TOPIK_GRAMMAR_CURRICULUM.get(level, [])
-    for t in curriculum:
-        if t not in covered:
-            return t
-    return curriculum[-1] if curriculum else "basic Korean grammar"
+    remaining = [t for t in curriculum if t not in covered]
+    if not remaining:
+        return None  # signals level is complete
+    return remaining[0]
+    # for t in curriculum:
+    #     if t not in covered:
+    #         return t
+    # return curriculum[-1] if curriculum else "basic Korean grammar"
 
 def _build_prompt(level, topic, recent_grammar, show_roman):
     desc = TOPIK_DESCRIPTIONS.get(level, "beginner")
@@ -121,6 +125,14 @@ class handler(BaseHTTPRequestHandler):
             recent = [r["grammar_title"] for r in recent_res.data]
 
             topic = _next_topic(level, covered)
+            
+            if topic is None:
+                self._respond(200, {
+                    "level_complete": True,
+                    "message": f"You've completed all TOPIK {level} grammar topics! Go to your Profile to advance to TOPIK {level + 1}."
+                })
+                return
+            
             lesson_data = call_gemini(_build_prompt(level, topic, recent, profile["show_roman"]))
 
             row = sb.table("lessons").insert({
