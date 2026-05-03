@@ -1,11 +1,6 @@
 {
   "framework": "nextjs",
   "outputDirectory": ".next",
-  "functions": {
-    "api/*.py": {
-      "runtime": "python3.9"
-    }
-  },
   "rewrites": [
   { "source": "/api/lesson(.*)",      "destination": "/api/lesson.py" },
   { "source": "/api/profile(.*)",     "destination": "/api/profile.py" },
