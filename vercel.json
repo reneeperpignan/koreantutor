@@ -1,5 +1,6 @@
 {
   "framework": "nextjs",
+  "outputDirectory": ".next",
   "rewrites": [
     { "source": "/api/lesson/:path*",      "destination": "/api/lesson.py" },
     { "source": "/api/profile",            "destination": "/api/profile.py" },
