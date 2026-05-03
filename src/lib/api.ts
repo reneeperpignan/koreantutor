@@ -1,7 +1,9 @@
 // All paths are relative — no NEXT_PUBLIC_API_URL needed.
 // Next.js proxies /api/* to Vercel Python functions automatically.
 
+
 async function req(path: string, opts: RequestInit = {}) {
+  console.log("fetching", path) 
   const res = await fetch(path, {
     headers: { "Content-Type": "application/json" },
     ...opts,

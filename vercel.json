@@ -1,12 +1,16 @@
 {
   "framework": "nextjs",
   "outputDirectory": ".next",
+  "functions": {
+    "api/*.py": {
+      "runtime": "python3.9"
+    }
+  },
   "rewrites": [
-    { "source": "/api/lesson/:path*",      "destination": "/api/lesson.py" },
-    { "source": "/api/profile",            "destination": "/api/profile.py" },
-    { "source": "/api/challenge/:path*",   "destination": "/api/challenge.py" },
-    { "source": "/api/flashcards/:path*",  "destination": "/api/flashcards.py" },
-    { "source": "/api/flashcards",         "destination": "/api/flashcards.py" },
-    { "source": "/api/assessment/:path*",  "destination": "/api/assessment.py" }
-  ]
+  { "source": "/api/lesson(.*)",      "destination": "/api/lesson.py" },
+  { "source": "/api/profile(.*)",     "destination": "/api/profile.py" },
+  { "source": "/api/challenge(.*)",   "destination": "/api/challenge.py" },
+  { "source": "/api/flashcards(.*)",  "destination": "/api/flashcards.py" },
+  { "source": "/api/assessment(.*)",  "destination": "/api/assessment.py" }
+]
 }
