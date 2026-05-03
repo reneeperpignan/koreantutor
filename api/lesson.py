@@ -73,6 +73,8 @@ class handler(BaseHTTPRequestHandler):
             self._today()
         elif p == "/api/lesson/history":
             self._history()
+        elif p == "/api/lesson/debug-curriculum":      # ← add this
+            self._respond(200, TOPIK_GRAMMAR_CURRICULUM)
         else:
             self._respond(404, {"error": "Not found"})
 
