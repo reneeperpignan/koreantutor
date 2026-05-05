@@ -20,6 +20,7 @@ TOPIK_GRAMMAR_CURRICULUM = {
         "있다/없다 (existence/possession)",
         "-(으)로 (direction/means)",
     ],
+
     2: [
         "-(으)ㄹ 거예요 (future tense)",
         "-고 싶다 (want to)",
@@ -32,53 +33,141 @@ TOPIK_GRAMMAR_CURRICULUM = {
         "-기 전에 (before doing)",
         "-고 나서 (after doing)",
     ],
+
     3: [
-        "-(으)ㄴ 후에 (after noun/verb)",
-        "-는 동안 (while doing)",
-        "-(으)ㄹ 때 (when/at the time of)",
-        "-게 되다 (come to / end up doing)",
-        "-아/어 보다 (try doing)",
-        "-(으)ㄹ 것 같다 (seems like / I think)",
-        "-든지 (regardless of / either or)",
-        "-기 위해서 (in order to)",
+        # Core intermediate (high-frequency, must-know)
+        "indirect speech: -다고 하다",
         "passive voice: -이/히/리/기",
         "causative: -이/히/리/기/우/추",
-    ],
-    4: [
-        "-(으)ㄹ 뿐만 아니라 (not only... but also)",
-        "-에 따라 (depending on / according to)",
-        "-(으)ㄹ수록 (the more... the more)",
-        "-는 한 (as long as)",
-        "-에도 불구하고 (despite / in spite of)",
-        "indirect speech: -다고 하다",
-        "-(으)ㄴ/는 반면에 (on the other hand)",
-        "-아/어야 하다 (must / have to)",
-        "Honorific speech level: -(으)십니다",
-        "-(으)ㄹ 텐데 (I expect / should be)",
-    ],
-    5: [
-        "-(으)ㄹ 법하다 (likely/plausible)",
-        "-는 바람에 (because of/due to, negative)",
-        "-(으)ㄴ/는 탓에 (because of, blame)",
-        "-(으)ㄹ 지경이다 (to the point of)",
-        "-고자 하다 (intend to / plan to)",
-        "-(으)ㄴ/는 셈이다 (it amounts to / it is as if)",
+        "Honorifics basics",
+
+        "-아/어 보다 (try doing)",
+        "-(으)ㄹ 것 같다 (seems like)",
+        "-게 되다 (end up doing)",
+
+        # High-frequency connectors
         "-아/어도 (even if/though)",
-        "-(으)ㄹ 만하다 (worth doing / bearable)",
-        "Contracted speech patterns",
-        "Formal vs informal register contrast",
+        "-다가 (while doing → switch)",
+        "-느라고 (because of, negative result)",
+        "-더라도 (even if, stronger)",
+        "-(으)ㄴ/는/(으)ㄹ 만큼 (to the extent of)",
+        "-든지 (either/or, regardless)",
+        "-는 대로 (as soon as / as is)",
+        "-자마자 (as soon as)",
+
+        # Time & sequence
+        "-(으)ㄹ 때 (when)",
+        "-는 동안 (while)",
+        "-고 나서 vs -고 보니까 (realization)",
+
+        # Expression patterns
+        "-아/어 봤자 (even if you try)",
+        "-(으)ㄹ까 봐(서) (for fear that)",
+        "-기에는 (too... to)",
+        "-거든 (if/when casual condition)",
+
+        # Auxiliary / state
+        "-아/어 있다 (state after action)",
     ],
+
+    4: [
+        # Contrast / cause / reasoning
+        "-(으)ㄴ/는 반면에 (contrast)",
+        "-는 바람에 (unexpected negative cause)",
+        "-(으)ㄴ/는 탓에 (cause/blame)",
+        "-느라고 vs -는 바람에 nuance",
+        "-길래 (because I saw/felt)",
+        "-다 보니(까) (as I kept doing)",
+        "-기에 / -다기에 (because I heard)",
+
+        # Advanced connectors
+        "-(으)ㄹ 뿐만 아니라 (not only but also)",
+        "-(으)면서(도) (while / even though)",
+        "-도록 (to the extent / so that)",
+        "-(으)ㄴ 채로 (while still in a state)",
+        "-(으)ㄹ 겸 (while also doing)",
+        "-는 김에 (while you're at it)",
+
+        # Perception / guessing
+        "-나 보다 / -(으)ㄴ가 보다",
+        "-(으)ㄴ/는/(으)ㄹ 모양이다",
+        "-(으)ㄴ/는/(으)ㄹ 듯하다",
+
+        # Descriptive past
+        "-던 / -았었던 (recollection vs completed past)",
+
+        # Ending expressions
+        "-(으)ㄴ/는 셈이다 (it amounts to)",
+        "-(으)ㄹ 리가 없다 (no way)",
+        "-던데(요) (background + reaction)",
+        "-어/아 가다/오다 (change over time)",
+
+        # Particles (보조사)
+        "-치고(는)",
+        "-(이)야말로",
+        "-조차",
+        "-마저",
+        "-은/는커녕",
+        "-밖에",
+        "-(이)나마",
+    ],
+
+    5: [
+        # Subtle connectors & discourse
+        "-더니 / -았었더니 (change after experience)",
+        "-는 둥 마는 둥 (half-hearted action)",
+        "-곤하다 (habitual)",
+        "-기만 하면 (whenever)",
+        "-는 법이다 (general truth)",
+
+        # Intent / plan / hesitation
+        "-(으)려던 참이다 (was just about to)",
+        "-(으)ㄹ까 하다 (thinking of doing)",
+        "-(으)려다가 (was going to but…)",
+
+        # Nuanced expressions
+        "-(으)ㄴ/는 척하다 (pretend to)",
+        "-다시피 하다 (almost / practically)",
+        "-고 보니까 (realization after doing)",
+        "-는 길에 (on the way)",
+
+        # Results / inevitability
+        "-고 말다 (end up doing)",
+        "-기 마련이다 (inevitably happens)",
+        "-(으)ㄹ 뻔하다 (almost did)",
+
+        # Emphasis / tone
+        "-기는 하다 (acknowledging contrast)",
+        "-기는요 (denial / politeness nuance)",
+    ],
+
     6: [
-        "Literary/written language endings: -다, -ㄴ다",
-        "Archaic/formal endings in official documents",
-        "Proverbs and idiomatic four-character expressions (사자성어)",
-        "Nuances of speech levels: 해요체 vs 합쇼체 vs 해체",
-        "-(으)ㄹ 따름이다 (can only / nothing but)",
-        "-(으)ㄹ진대 (given that / since — formal)",
-        "Advanced nominalization with -음 vs -기",
-        "-(으)로 인해 (due to — formal/written)",
+        # Formal / written / rare but high-value
+        "Literary endings: -다 / -ㄴ다",
+        "Formal connectors: -(으)ㄹ진대",
+        "-(으)로 인해 (formal cause)",
+        "-(으)ㄹ 따름이다 (nothing but)",
+        "-(으)ㄹ 뿐이다 (only / merely)",
+
+        # Complex structures
+        "-(으)ㄴ다면 (hypothetical advanced)",
+        "-(으)ㄴ 나머지 (extreme result)",
+        "-고도 (even though)",
         "Double subject constructions",
         "Complex relative clauses",
+
+        # High-level nuance connectors
+        "-는 통에 (negative cause, stronger)",
+        "-에 비하여 / 비해서 (comparison)",
+        "-고 보니 (retrospective realization)",
+
+        # Register & discourse mastery
+        "Formal vs informal register contrast",
+        "Nuances of speech levels",
+        "Advanced nominalization (-음 vs -기)",
+
+        # Idiomatic mastery
+        "Proverbs and 사자성어",
     ],
 }
 
